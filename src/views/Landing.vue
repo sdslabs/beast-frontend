@@ -26,8 +26,8 @@
             <Button text="See Challenges" class="primary-cta"
           /></router-link>
           <router-link style="text-decoration: none" v-else to="/register">
-            <Button text="Register Now" class="primary-cta"
-          /></router-link>
+            <div class="primary-cta">Register Now</div>
+          </router-link>
         </div>
         <div class="event-info-img">
           <img class="landing-img" src="@/assets/landing1.svg" />
@@ -56,12 +56,12 @@ import LoginUser from "../api/admin/authAPI.js";
 export default {
   name: "home",
   components: {
-    Button
+    Button,
   },
   props: ["fetchedData", "configs"],
   data() {
     return {
-      configData: {}
+      configData: {},
     };
   },
   beforeCreate() {
@@ -69,7 +69,7 @@ export default {
   },
   mounted() {
     if (!this.fetchedData) {
-      ConfigApiService.getConfigs().then(response => {
+      ConfigApiService.getConfigs().then((response) => {
         this.configData = response.data;
       });
     } else {
@@ -88,8 +88,8 @@ export default {
       return moment(time, "HH:mm:ss UTC: Z, DD MMMM YYYY, dddd").format(
         "HH:mm:ss UTC: Z, Do MMMM YYYY, dddd"
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
